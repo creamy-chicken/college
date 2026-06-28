@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>American College Search</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-main">
+        <div>
+          <p class="eyebrow">American College Search</p>
+          <h1 id="page-title">UC Campuses In America</h1>
+        </div>
+        <div class="header-meta">
+          <span id="loaded-count">0 colleges</span>
+          <span>No community colleges</span>
+        </div>
+      </div>
+      <nav class="state-tabs" id="state-tabs" aria-label="College tabs"></nav>
+    </header>
+
+    <main>
+      <section class="controls" aria-label="College filters">
+        <label class="search-field">
+          <span>Search</span>
+          <input id="search-input" type="search" placeholder="College, city, program" autocomplete="off" />
+        </label>
+        <label class="select-field">
+          <span>Sort</span>
+          <select id="sort-select">
+            <option value="name">Name</option>
+            <option value="admit-low">Lowest admit rate</option>
+            <option value="admit-high">Highest admit rate</option>
+            <option value="tuition-low">Lowest tuition</option>
+            <option value="enrollment">Largest incoming class</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="state-summary" id="state-summary"></section>
+      <section class="college-grid" id="college-grid" aria-live="polite"></section>
+
+      <section class="map-section" aria-labelledby="map-title">
+        <div class="section-heading">
+          <p class="eyebrow">Interactive map</p>
+          <h2 id="map-title">College Map Of America</h2>
+          <p>Drag to move the real U.S. state map, use the controls or mouse wheel to zoom, and click a star for full college details.</p>
+        </div>
+        <div class="map-shell">
+          <div class="map-controls" aria-label="Map controls">
+            <button type="button" id="map-zoom-in" aria-label="Zoom in">+</button>
+            <button type="button" id="map-zoom-out" aria-label="Zoom out">-</button>
+            <button type="button" id="map-reset">Reset</button>
+          </div>
+          <div class="map-viewport" id="map-viewport">
+            <div class="map-canvas" id="map-canvas"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="detail-overlay" id="detail-overlay" hidden>
+      <article class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+        <button class="close-button" id="close-detail" type="button" aria-label="Close details">x</button>
+        <div class="detail-media" id="detail-media"></div>
+        <div class="detail-content">
+          <div>
+            <p class="eyebrow" id="detail-location"></p>
+            <h2 id="detail-title"></h2>
+          </div>
+          <p id="detail-summary"></p>
+          <div class="detail-stats" id="detail-stats"></div>
+          <div class="detail-section">
+            <h3>Tuition, Rent, and Food</h3>
+            <div class="cost-list" id="detail-costs"></div>
+          </div>
+          <div class="detail-section">
+            <h3>Programs</h3>
+            <div class="program-list" id="detail-programs"></div>
+          </div>
+          <div class="detail-section">
+            <h3>Good Fit For</h3>
+            <ul id="detail-fit"></ul>
+          </div>
+          <div class="detail-section">
+            <h3>Links</h3>
+            <div class="source-links" id="detail-links"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="./scorecard-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
